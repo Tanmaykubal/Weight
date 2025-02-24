@@ -1,1 +1,6 @@
 ipykernel
+streamlit
+matplotlib
+numpy
+pandas
+requests
