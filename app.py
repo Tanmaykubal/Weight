@@ -27,10 +27,15 @@ def calculate_time_to_goal(current_weight_kg, desired_weight_kg, deficit_surplus
     days = total_calories / abs(deficit_surplus)
     return days / 7  # Convert to weeks
 
-def recommended_water_intake(weight_kg):
-    # General recommendation: 30-35ml per kg of body weight
-    return (weight_kg * 32.5) / 1000  # Average of 30-35ml, converted to liters
-
+def recommended_water_intake(age, Gender):
+    if 9 <= age <= 13:
+        return 2.4 if Gender == "Male" else 2.1
+    elif 14 <= age <= 18:
+        return 3.3 if Gender == "Male" else 2.2
+    elif 19 <= age <= 70:
+        return 3.7 if Gender == "Male" else 2.7
+    else:
+        return "Age out of range for recommendation"
 
 
 st.title("Weight Goal Calculator")
@@ -85,7 +90,7 @@ else:
         goal_type = "surplus"
     
 weeks_to_goal = calculate_time_to_goal(current_weight_kg, desired_weight_kg, deficit if goal_type == "deficit" else surplus)
-recommended_water = recommended_water_intake(current_weight_kg)
+recommended_water = recommended_water_intake(age,gender)
 
 # Display results
 st.header("Results")
