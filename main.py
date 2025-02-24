@@ -3,12 +3,25 @@ import introduction
 import app
 import calrie
 
-st.sidebar.title("Navigation")
-page = st.sidebar.radio("Select Page", ["Introduction", "App", "Calorie"])
+# Customize page config
+st.set_page_config(
+    page_title="My Health & Nutrition App",
+    page_icon="✨",
+    layout="wide"
+)
 
+# Sidebar customization with new labels
+st.sidebar.markdown("<h2 style='text-align: center;'>Navigation</h2>", unsafe_allow_html=True)
+page = st.sidebar.radio(
+    "",
+    ["Introduction", "Weight Calculator 🏋️", "Calorie Intake 🍎"],
+    index=0
+)
+
+# Render the selected page
 if page == "Introduction":
-    introduction.run()      # Loads the introduction page
-elif page == "App":
-    app.run()               # Loads the weight goal calculator from app.py
-elif page == "Calorie":
-    calrie.run()            # Loads the calorie tracker from calrie.py
+    introduction.run()
+elif page == "Weight Calculator 🏋️":
+    app.run()
+elif page == "Calorie Intake 🍎":
+    calrie.run()
