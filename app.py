@@ -263,7 +263,7 @@ def run():
 
         st.write("To gain weight safely, aim for a **250 calorie daily surplus**.")
 
-        st.write("This typically results in about 0.25 kg weight gain per week.")
+        st.write("This typically results in about **0.25 kg** weight gain per week.")
 
     
 
