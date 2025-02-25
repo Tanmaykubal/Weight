@@ -65,6 +65,7 @@ def recommended_water_intake(age, gender):
 def calculate_bmi(weight_kg, height_cm):
     height_m = height_cm / 100
     return weight_kg / (height_m ** 2)
+    
 def bmi_category(bmi):
     if bmi < 18.5:
         return "Underweight"
