@@ -210,12 +210,12 @@ def run():
     st.write(f"**Recommended Daily Calories ({goal_type}):** {target_calories:.0f} calories/day")
 
     st.write(f"**Estimated Time to Reach Goal:** {weeks_to_goal:.1f} weeks")
-    st.write(f"Your BMI: {bmi:.1f} ({bmi_cat})")
+    st.write(f"**Your BMI:** {bmi:.1f} ({bmi_cat})")
 
 
     
 
-    st.markdown("<h3 style='color:#d35400;'>Time to Goal Range</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color:#d35400;'>Time to Goal Range (min: 250 cal, avg: 500 cal, max: 1000 cal for loss; reverse for gain)</h3>", unsafe_allow_html=True)
 
     st.write(f"- Slow pace: {max_time:.1f} weeks")
 
