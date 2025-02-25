@@ -52,9 +52,28 @@ def calculate_time_to_goal(current_weight_kg, desired_weight_kg, deficit_surplus
 
 
 
-def recommended_water_intake(weight_kg):
+def recommended_water_intake(age, gender):
+    if 9 <= age <= 13:
+        return 2.4 if gender == "Male" else 2.1
+    elif 14 <= age <= 18:
+        return 3.3 if gender == "Male" else 2.2
+    elif 19 <= age <= 70:
+        return 3.7 if gender == "Male" else 2.7
+    else:
+        return "Age out of range for recommendation"
 
-    return (weight_kg * 32.5) / 1000
+def calculate_bmi(weight_kg, height_cm):
+    height_m = height_cm / 100
+    return weight_kg / (height_m ** 2)
+def bmi_category(bmi):
+    if bmi < 18.5:
+        return "Underweight"
+    elif 18.5 <= bmi < 25:
+        return "Normal"
+    elif 25 <= bmi < 30:
+        return "Overweight"
+    else:
+        return "Obese"
 
 
 
@@ -135,6 +154,7 @@ def run():
     tdee = calculate_tdee(bmr, activity_level)
 
     weight_diff = current_weight_kg - desired_weight_kg
+    bmi = calculate_bmi(current_weight_kg, height_cm)
 
     
 
@@ -174,7 +194,9 @@ def run():
 
     
 
-    recommended_water = recommended_water_intake(current_weight_kg)
+    recommended_water = recommended_water_intake(age,gender)
+    bmi_cat = bmi_category(bmi)
+   
 
     
 
@@ -187,6 +209,8 @@ def run():
     st.write(f"**Recommended Daily Calories ({goal_type}):** {target_calories:.0f} calories/day")
 
     st.write(f"**Estimated Time to Reach Goal:** {weeks_to_goal:.1f} weeks")
+    st.write(f"Your BMI: {bmi:.1f} ({bmi_cat})")
+
 
     
 
@@ -287,6 +311,9 @@ def run():
     advice = fetch_advice()
 
     st.write(f"**Advice:** {advice}")
+
+
+
 
     
 
